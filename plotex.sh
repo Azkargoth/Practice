@@ -21,18 +21,18 @@
 #   plotex <filename_to_gnuplot>  (to compile in regular mode)
 #   plotex -q <filename_to_gnuplot>  (to compile in quiet mode)
 
-if [ -z "$1" ]; then
-    echo -e "\tUsage: \n\t\tplotex <filename_of_gnuplot_script>"
+if [ -z "$1" ]; then #-z = "no existe", "$1" = "Primera Entrada".
+    echo -e "\tUsage: \n\t\tplotex <filename_of_gnuplot_script>" #echo -e= "caracteres especiales" como \t="Tabuldor"
     echo -e "\t\tplotex -q <filename_of_gnuplot_script> (to compile in quiet mode)\n"
-    exit 1
-elif [ "$1" = "-q" ]; then
+    exit 1 # Break en C++
+elif [ "$1" = "-q" ]; then #si la primera entrada
     if [ -z "$2" ]; then
         echo -e "\tUsage: \n\t\tplotex <filename_of_gnuplot_script>"
         echo -e "\t\tplotex -q <filename_of_gnuplot_script> (to compile in quiet mode)\n"
         exit 1
     else
         gnuplot "$2" 
-        texfiles=(`grep output "$2" | grep -v \# |awk -F"\"" '{for(i=2;i<=NF;i+=2)print $i}'`)
+        texfiles=(`grep output "$2" | grep -v \# |awk -F"\"" '{for(i=2;i<=NF;i+=2)print $i}'`)#texfiles es un arreglo,en la cual busca output, 
         for i in "${texfiles[@]}"; do
             # echo "$i exist"
             echo -e "Compiling: $i"
