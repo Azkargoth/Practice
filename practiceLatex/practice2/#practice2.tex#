@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage{amsmath}
+\title {Segundo documento \LaTeX}
+\author{Guillermo Arag\'on}
+\date{\today}
+
+\begin{Document}
+  \maketitle
+
+  Este es mi primer docuemtno de \LaTeX
+
+  \section{Primera Ecuaci\'on}
+  Entorno de ecuaci\'on dentro de la l\'inea de texto: $\sum^{\infty}_{n=1}$
+
+  Con el s\'ibolo \^\ se escriben lso super\'indices y con \_\ los sub\'indices.
+  
+  \section{Entornos de ecuaciones}
+\begin{Document}
+  Hay varios tipos de entornos de ecuaci\'on. Los m\'as importantes son:
+
+  \begin{enumerate}
+  \item \emph{equation}
+  \item \emph{align}
+  \item \emph{split}
+  \end{enumerate}
+
+\end{document}
+

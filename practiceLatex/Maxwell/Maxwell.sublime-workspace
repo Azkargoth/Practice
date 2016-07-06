@@ -1,0 +1,328 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"section",
+				"section	section"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "#!/usr/local/Cellar/gnuplot/5.0.0/bin/gnuplot -persist\n#\n#    \n#       G N U P L O T\n#       Version 5.0 patchlevel 0    last modified 2015-01-01 \n#    \n#       Copyright (C) 1986-1993, 1998, 2004, 2007-2015\n#       Thomas Williams, Colin Kelley and many others\n#    \n#       gnuplot home:     http://www.gnuplot.info\n#       faq, bugs, etc:   type \"help FAQ\"\n#       immediate help:   type \"help\"  (plot window: hit 'h')\nset terminal epslatex    leveldefault color blacktext \\\n   dashlength 1.0 linewidth 1.0 butt noclip \\\n   nobackground \\\n   palfuncparam 2000,0.003 \\\n   standalone \"\" 11  fontscale 1.0 \nset output \"ecut.tex\"\nunset clip points\nset clip one\nunset clip two\nset bar 1.000000 front\nset border 31 front lt black linewidth 1.000 dashtype solid\nset zdata \nset ydata \nset xdata \nset y2data \nset x2data \nset boxwidth\nset style fill  empty border\nset style rectangle back fc  bgnd fillstyle   solid 1.00 border lt -1\nset style circle radius graph 0.02, first 0.00000, 0.00000 \nset style ellipse size graph 0.05, 0.03, first 0.00000 angle 0 units xy\nset dummy x, y\nset format x \"% h\" \nset format y \"% h\" \nset format x2 \"% h\" \nset format y2 \"% h\" \nset format z \"% h\" \nset format cb \"% h\" \nset format r \"% h\" \nset timefmt \"%d/%m/%y,%H:%M\"\nset angles radians\nunset grid\nset raxis\nset style parallel front  lt black linewidth 2.000 dashtype solid\nset key title \"ecut\"\nset key inside right top vertical Right noreverse enhanced autotitle nobox\nset key noinvert samplen 4 spacing 1 width 0 height 0 \nset key maxcolumns 0 maxrows 0\nset key noopaque\nunset label\nunset arrow\nset style increment default\nunset style line\nset style line 1  dashtype 2 linecolor rgb \"#6c71c4\"  linewidth 1.500 #violet\nset style line 2  dashtype 3 linecolor rgb \"#859900\"  linewidth 1.500 #green\nset style line 3  dashtype 1 linecolor rgb \"#cb4b16\"  linewidth 1.000 #orange\nset style line 4  dashtype 1 linecolor rgb \"#2aa198\"  linewidth 1.000 #cyan\nset style line 5  dashtype 1 linecolor rgb \"#dc322f\"  linewidth 1.000 #red\nset style line 6  dashtype 1 linecolor rgb \"#268bd2\"  linewidth 1.000 #blue\nset style line 7  dashtype 1 linecolor rgb \"#d33682\"  linewidth 1.000 #magenta\nset style line 8  dashtype 1 linecolor rgb \"#b58900\"  linewidth 1.000 #yellow\nunset style arrow\nset style histogram clustered gap 2 title textcolor lt -1\nunset object\nset style textbox transparent margins  1.0,  1.0 border\nunset logscale\nset offsets 0, 0, 0, 0\nset pointsize 1\nset pointintervalbox 1\nset encoding default\nunset polar\nunset parametric\nunset decimalsign\nset view 60, 30, 1, 1\nset samples 100, 100\nset isosamples 10, 10\nset surface \nunset contour\nset cntrlabel  format '%8.3g' font '' start 5 interval 20\nset mapping cartesian\nset datafile separator whitespace\nunset hidden3d\nset cntrparam order 4\nset cntrparam linear\nset cntrparam levels auto 5\nset cntrparam points 5\nset size ratio 0 1,1\nset origin 0,0\nset style data points\nset style function lines\nunset xzeroaxis\nunset yzeroaxis\nunset zzeroaxis\nunset x2zeroaxis\nunset y2zeroaxis\nset ticslevel 0.5\nset tics scale  1, 0.5, 1, 1, 1\nset mxtics default #minor Tics, las rallitas que forman resolución máxima\nset mytics default\nset mztics default\nset mx2tics default\nset my2tics default\nset mcbtics default\nset mrtics default\nset xtics border in scale 1,0.5 mirror norotate  autojustify\nset xtics autofreq  norangelimit\nset ytics border in scale 1,0.5 mirror norotate  autojustify\nset ytics autofreq  norangelimit\nset ztics border in scale 1,0.5 nomirror norotate  autojustify\nset ztics autofreq  norangelimit\nunset x2tics\nunset y2tics\nset cbtics border in scale 1,0.5 mirror norotate  autojustify\nset cbtics autofreq  norangelimit\nset rtics axis in scale 1,0.5 nomirror norotate  autojustify\nset rtics autofreq  norangelimit\nunset paxis 1 tics\nunset paxis 2 tics\nunset paxis 3 tics\nunset paxis 4 tics\nunset paxis 5 tics\nunset paxis 6 tics\nunset paxis 7 tics\nset title \"\" \nset title  font \"\" norotate\nset timestamp bottom \nset timestamp \"\" \nset timestamp  font \"\" norotate\nset rrange [ * : * ] noreverse nowriteback\nset trange [ * : * ] noreverse nowriteback\nset urange [ * : * ] noreverse nowriteback\nset vrange [ * : * ] noreverse nowriteback\nset xlabel \"$\\\\hbar\\\\omega$ (eV)\" \nset xlabel  font \"\" textcolor lt -1 norotate\nset x2label \"\" \nset x2label  font \"\" textcolor lt -1 norotate\nset xrange [ 0 : 5 ] noreverse nowriteback\nset x2range [ * : * ] noreverse nowriteback\nset ylabel \"$|\\\\chi^{xxx}_{\\\\mathrm{half-slab}}|(10^{6}\\\\times\\\\mathrm{pm}^{2}/\\\\mathrm{V})$\" \nset ylabel  font \"\" textcolor lt -1 rotate by -270\nset y2label \"\" \nset y2label  font \"\" textcolor lt -1 rotate by -270\nset yrange [ 0.0 : 1.6 ] noreverse nowriteback\nset y2range [ * : * ] noreverse nowriteback\nset zlabel \"\" \nset zlabel  font \"\" textcolor lt -1 norotate\nset zrange [ * : * ] noreverse nowriteback\nset cblabel \"\" \nset cblabel  font \"\" textcolor lt -1 rotate by -270\nset cbrange [ * : * ] noreverse nowriteback\nset paxis 1 range [ * : * ] noreverse nowriteback\nset paxis 2 range [ * : * ] noreverse nowriteback\nset paxis 3 range [ * : * ] noreverse nowriteback\nset paxis 4 range [ * : * ] noreverse nowriteback\nset paxis 5 range [ * : * ] noreverse nowriteback\nset paxis 6 range [ * : * ] noreverse nowriteback\nset paxis 7 range [ * : * ] noreverse nowriteback\nset zero 1e-08\nset lmargin  -1\nset bmargin  -1\nset rmargin  -1\nset tmargin  -1\nset locale \"en_US.UTF-8\"\nset pm3d explicit at s\nset pm3d scansautomatic\nset pm3d interpolate 1,1 flush begin noftriangles noborder corners2color mean\nset palette positive nops_allcF maxcolors 0 gamma 1.5 color model RGB \nset palette rgbformulae 7, 5, 15\nset colorbox default\nset colorbox vertical origin screen 0.9, 0.2, 0 size screen 0.05, 0.6, 0 front bdefault\nset style boxplot candles range  1.50 outliers pt 7 separation 1 labels auto unsorted\nset loadpath \nset fontpath \nset psdir\nset fit brief errorvariables nocovariancevariables errorscaling prescale nowrap v5\nset label \"Clean Clean $2\\\\times 1$\" at 3.2,0.35\nGNUTERM = \"wxt\"\nabso(w,x,y,z)=sqrt((w+y)**2+(x+z)**2)\np   \"../../cases/Clean_Clean_2x1/Clean_Clean_2x1_40layers/resx/shgC.sm_xxx_400_half-slab_05-nospin_scissor_0.0_Nc_160\" u 1:(abso($2,$3,$4,$5)) title \"05\" w l ls 1,\\\n    \"../../cases/Clean_Clean_2x1/Clean_Clean_2x1_40layers/resx/shgC.sm_xxx_400_half-slab_10-nospin_scissor_0.0_Nc_160\" u 1:(6667.6333374*abso($2,$3,$4,$5)/1e06) title \"10\" w l ls 2,\\\n    \"../../cases/Clean_Clean_2x1/Clean_Clean_2x1_40layers/resx/shgC.sm_xxx_400_half-slab_12-nospin_scissor_0.0_Nc_160\" u 1:(abso($2,$3,$4,$5)) title \"12\" w l ls 3,\\\n    \"../../cases/Clean_Clean_2x1/Clean_Clean_2x1_40layers/resx/shgC.sm_xxx_400_half-slab_15-nospin_scissor_0.0_Nc_160\" u 1:(abso($2,$3,$4,$5)) title \"15\" w l ls 4,\\\n#   EOF\n\n",
+			"file": "/home/lukinat/practiceGnuplot/scriptsGnuplot/complete_script.gp",
+			"file_size": 6650,
+			"file_write_time": 131122285517806246,
+			"settings":
+			{
+				"buffer_size": 6705,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 92.0,
+		"last_filter": "set bash",
+		"selected_items":
+		[
+			[
+				"set bash",
+				"Set Syntax: Shell Script (Bash)"
+			],
+			[
+				"insall",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 521.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/lukinat/practiceLatex/Maxwell"
+	],
+	"file_history":
+	[
+		"/home/lukinat/practiceLatex/Maxwell/Maxwell.tex",
+		"/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty",
+		"/home/lukinat/practiceLatex/practice3/practice3.tex",
+		"/home/lukinat/practiceLatex/practice3/untitled.tex",
+		"/home/lukinat/practiceLatex/practice2/practice2.tex",
+		"/home/lukinat/practiceLatex/practice2/practice2.synctex.gz",
+		"/home/lukinat/practiceLatex/practice2/practice2.pdf",
+		"/home/lukinat/practiceLatex/practice2/practice2.log",
+		"/home/lukinat/practiceLatex/practice2/practice2.fls",
+		"/home/lukinat/practiceLatex/practice2/practice2.fdb_latexmk",
+		"/home/lukinat/practiceLatex/practice2/practice2.aux",
+		"/home/lukinat/practiceLatex/practice2/texput.log",
+		"/home/lukinat/practiceLatex/practice2/practice2.tex~",
+		"/home/lukinat/practiceLatex/comandos latex"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"equation",
+			"\n	",
+			"begin",
+			"{}",
+			"2",
+			"equation",
+			"align",
+			"equation",
+			"enumerate",
+			"equation"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/home/lukinat/practiceGnuplot/scriptsGnuplot/complete_script.gp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6705,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6365,
+								6365
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content"
+							],
+							"syntax": "Packages/ShellScript/Shell-Unix-Generic.sublime-syntax"
+						},
+						"translation.x": 583.0,
+						"translation.y": 2233.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "Maxwell.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"~/practiceLatex/practice2/practice2.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 209.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

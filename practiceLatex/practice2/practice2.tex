@@ -1,0 +1,60 @@
+\documentclass{article}
+\usepackage{amsmath}
+\title {Segundo documento \LaTeX}
+\author{Guillermo Arag\'on}
+\date{\today}
+
+\begin{Document}
+  \maketitle
+
+  Este es mi primer docuemtno de \LaTeX
+
+  \section{Primera Ecuaci\'on}
+  Entorno de ecuaci\'on dentro de la l\'inea de texto: $\sum^{\infty}_{n=1}$
+
+  Con el s\'imbolo \^\ se escriben lso super\'indices y con \_\ los sub\'indices.
+  
+  \section{Entornos de ecuaciones}
+
+  Hay varios tipos de entornos de ecuaci\'on. Los m\'as importantes son:
+
+  \begin{enumerate}
+  \item \emph{equation}
+  \begin{enumerate}
+    \item \emph{equation} simple
+    \item \emph{split} equation  
+    
+  \end{enumerate}
+  \item \emph{align}  
+  \end{enumerate}
+
+  \begin{equation}
+  \frac{d\hat{\theta}}{dt} = \sum_{k_{t}=1}^nC^{*}_{n}(k_{t}) 
+  \end{equation}
+  
+  \begin{equation*}
+  \frac{d\hat{\theta}}{dt} = \sum_{k_{t}=1}^nC^{*}_{n}(k_{t}) 
+  \end{equation*}
+
+  \begin{align}
+    P_{c}=& \pi D \nonumber \\
+         =& 2\pi r 
+  \end{align}
+
+  \begin{equation}
+  \begin{split}
+    P_{c}=& \pi D \\
+         =& 2\pi r 
+  \end{split}
+  \end{equation}
+
+\begin{subequations}
+  \begin{align}
+    P_{c}=& \pi D \\
+         =& 2\pi r 
+  \end{align}
+\end{subequations}
+
+
+\end{document}
+

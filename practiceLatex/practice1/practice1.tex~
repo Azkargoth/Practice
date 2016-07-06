@@ -1,0 +1,8 @@
+\thispagestyle{empty}%quita todo el estilo de la página
+
+\documentclass{standalone}
+\begin{document}
+Hola Mundo, hoy quisiera decirte que las cosas funcionan mejor al usar todos los dedos.
+Adi\'os mundo cruel
+%hasta la vista baby
+\end{document}
