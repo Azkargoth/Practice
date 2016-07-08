@@ -1,0 +1,24 @@
+Figlín,                                                                                                                            
+Ya estufas. svn://em.fis.unam.mx/haydockFields20131105.                                                                            
+Lo primero que deberás hacer es:                                                                                                   
+
+> svn checkout svn://em.fis.unam.mx/haydockFields20131105 tudir                                                                     
+
+donde tudir es el nombre que le quieras dar a tu directorio.                                                                       
+Luego cambiate a tudir, copia los archivos relevantes y añadelos con                                                               
+
+>  svn add tuarchivo                                                                                                                
+
+Ten cuidado al meter directorios para que no meta todo el contenido                                                                
+del directorio (que podría incluir subdirectorios y videos).  Para                                                                 
+ello, cuando añadas un directorio haz                                                                                              
+
+> svn add --depth=empty tusubdir                                                                                                    
+
+y luego                                                                                                                            
+
+> svn add tusubdir/tuarchivo                                                                                                        
+
+Cuando esté todo, puedes dar 
+
+> svn commit -m 'breve resumen de que se hizo'

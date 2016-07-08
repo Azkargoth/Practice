@@ -1,0 +1,199 @@
+\documentclass[preprint,12pt]{revtex4}
+\usepackage{grffile}%so the file kind is the last .*
+\usepackage{bm} %for bold math
+\usepackage{amsmath,mathrsfs}
+\newcommand{\op}[1]{{\hat{\mathcal#1}}}
+%\AtEndDocument{\message{^^JLaTeX Info: Executing hook `AtEndDocument'.}}
+\def\colore{red}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{animate}
+%%%% fancy header
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{2pt}
+%%%%%
+\usepackage[spanish,english]{babel}
+\usepackage[utf8]{inputenc}
+%\usepackage{showkeys}
+\allowdisplaybreaks[1]%biutiful equation breaker!!!
+\usepackage{graphicx}
+\usepackage{fancyvrb}
+%%%%*****************%%%% fine hyperef 
+\usepackage[backref,pdffitwindow,colorlinks,citecolor={red},linkcolor={blue}]{hyperref}
+%%%%*****************%%%%
+% Definitions 
+\input{definitions}
+%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\theenumi}{\arabic{enumi}}
+\renewcommand{\theenumii}{.\arabic{enumii}}
+\renewcommand{\theenumiii}{.\arabic{enumiii}}
+%
+\renewcommand{\labelenumi}{\arabic{enumi}}
+\renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}}
+\renewcommand{\labelenumiii}{\arabic{enumi}.\arabic{enumii}.\arabic{enumiii}}
+%
+\newcommand{\cita}{\addtocounter{enumii}{1}}
+%\selectlanguage{spanish}
+\usepackage{setspace}
+\usepackage{lastpage}
+\cfoot{Page~\thepage~of \pageref{LastPage}}
+\lhead{}
+\rhead{semiejes}
+%\usepackage{pageslts}
+\begin{document}
+
+%Se me ocurrió otra forma de proceder, más algebráica:
+\begin{enumerate}
+\item	 Sea el eigenvector complejo es $\vec v=\vec v'+\vec v''$
+\item	 Eso significa que el campo es \\
+	  $ \vec E(t)\propto \vec v'\cos\omega t+\vec v''\sin\omega t$
+\item	 Tomando componentes\\
+	   $E_x=v'_x\cos\omega t+v''_x\sin\omega t$\\
+	   $E_y=v'_y\cos\omega t+v''_y\sin\omega t$
+\item	 Eliminando $\cos\omega t$\\
+	   $v'_y E_x-v'_x E_y=(v'_y v''_x-v'_x v''_y)\sin\omega t$
+\item	 y eliminando $\sin\omega t$\\
+	   $v''_y E_x-v''_x E_y=(v''_y v'_x-v''_x v'_y)\cos\omega t$
+\item	 De donde podemos despejar\\ 
+	   $\sin\omega t=\frac{v'_y E_x-v'_x E_y}{v'_y v''_x - v'_x v''_y}$\\
+	   $\cos\omega t=-\frac{v''_y E_x-v''_x E_y}{v'_y v''_x - v'_x v''_y}$
+\item	 Con $\cos^2+\sin^2=1$, podemos eliminar al tiempo escribiendo\\
+	   $\vec E^T M \vec E=1$
+\item	 donde escribimos $\vec E$ como vector columna y $M$ es una
+	   matriz con componentes\\
+	   $M_{xx}=|v_y|^2/D$\\
+	   $M_{xy}=-(v'_x v'_y+v''_x v''_y)/D$\\
+	   $M_{yy}=|v_x|^2/D$\\
+	   con\\
+	   $D=(v'_y v''_x-v'_x v''_y)^2.$
+\item	 La ecuacion secular para esta matriz es\\
+	   $\lambda^2 -\lambda \mathrm{tr}(M) + \mathrm{det}(M)=0$\\
+	   con soluciones\\
+	     $\lambda_\pm=\big(\mathrm{tr}(M)\pm\sqrt{\mathrm{tr}(M)^2-4\mathrm{det}(M)}\big)/2$\\
+	   a las que corresponden eigenvectores $|+\rangle$ y $|-\rangle$
+	   (no confundir con polarizaciones circulares derecha e izquierda).
+\item	 Escribiendo $\vec E=E_+|+\rangle + E_-|-\rangle$ obtenemos\\
+	    $\vec E^T M \vec E=\lambda_- E_-^2 + \lambda_+ E_+^2 = 1$\\
+	    que es la ecuacion de una elipse con semieje mayor\\
+	    $a=1/\sqrt\lambda_-$\\
+	    y semieje menor\\
+	    $b=1/\sqrt\lambda_+$
+\item	 Las direcciones correspondientes a estos semiejes son\\
+	    $\tan\psi_-=(\lambda_- - M_{xx})/M_{xy}$\\
+	    $\tan\psi_+=(\lambda_+ - M_{xx})/M_{xy}$
+\item	 Para verificarlo hice un programita en gnuplot (anexo).
+\end{enumerate}
+\section{Diagonalization}
+Eigenvalues and eigenvectors of a $2\times 2$ symmetric matrix
+$M\ket{\lambda_i}=\lambda_i\ket{\lambda_i}$, with 
+\begin{equation}\label{h.1}
+\left(\begin{array}{cc} 
+M_{xx}&M_{xy}\\ 
+M_{xy}&M_{yy}
+\end{array}\right)
+.
+\end{equation} 
+Then,
+\begin{eqnarray}\label{h.1}
+\left|\begin{array}{cc}
+M_{xx}-\lambda&M_{xy}\\
+M_{xy}&M_{yy}-\lambda
+\end{array}\right|
+&=&(M_{xx}-\lambda)(M_{yy}-\lambda) -M^2_{xy}
+\nonumber\\
+&=&
+\lambda^2-\lambda(M_{xx}+M_{yy})+M_{xx}M_{yy}-M^2_{xy}
+\nonumber\\
+&=&
+\lambda^2-\lambda 
+\mathrm{Tr}[M]
++
+\mathrm{Det}[M]
+=0
+\nonumber\\
+\to\lambda_{\pm}&=&
+\frac{1}{2}\left(
+\mathrm{Tr}[M]
+\pm\sqrt{(\mathrm{Tr}[M])^2-4 \mathrm{Det}[M]}
+\right)
+.
+\end{eqnarray}
+The eigenvectors follow from
+\begin{eqnarray}\label{h.1}
+\left(\begin{array}{cc}
+M_{xx}-\lambda&M_{xy}\\
+M_{xy}&M_{yy}-\lambda
+\end{array}\right)
+\left(\begin{array}{c}
+a\\
+b
+\end{array}\right)
+&=&0
+\nonumber\\
+(M_{xx}-\lambda)a+M_{xy}b&=&0
+\nonumber\\
+M_{xy}a+(M_{yy}-\lambda)b&=&0
+\nonumber\\
+\to b&=&\frac{\lambda-M_{xx}}{M_{xy}}a,
+\nonumber\\
+\to
+ \bfV
+&=&
+\frac{a}{M_{xy}}\left(\begin{array}{c}
+M_{xy}\\
+\lambda-M_{xx}
+\end{array}\right)
+,
+\end{eqnarray}
+and use $a$ to normalize the vector, then
+\begin{equation}\label{h.3}
+ \bfv_\pm
+=
+\frac{1}{\sqrt{|M_{xy}|^2+|\lambda_\pm-M_{xx}|^2}}
+\left(\begin{array}{c}
+M_{xy}\\
+\lambda_\pm-M_{xx}
+\end{array}\right)
+,
+\end{equation}
+with $\bfv_\pm\cdot\bfv_\pm^T=1$,
+and $\bfv_\mp\cdot\bfv_\pm=0$ can be easily verified for the case of
+real $M$. If $M$ is complex the complex eigenvectors are not
+necessarily perpendicular.  
+%%%%%%%%%%%%
+\end{document}
+
+From mochan@fis.unam.mx Wed Mar  5 13:44:15 2014
+Date: Tue, 4 Mar 2014 13:46:36 -0600
+From: Luis Mochan <mochan@fis.unam.mx>
+To: Bernardo Mendoza Santoyo <bms@cio.mx>
+Subject: Re: ayuda
+
+Si quieres probamos hoy a las 14:00 de aquí.
+Acabo de intentar entender algo de los ángulos from scratch. Te cuento:
+Considera un eigenvector complejo \vec v=\vec v'+\vec v''. Conforme
+transcurre el tiempo, su punta recorre la figura \vec(t)=Re \vec v
+e^{-iwt} =  \vec v' \cos wt + \vec v'' \sin wt. Considera un vector
+real fijo unitario \hat n=(cos \theta, \sin \theta). Considera el
+producto escalar dependiente del tiempo \alpha(t)=\hat n\cdot\vec v(t). Lo que
+hice fue encontrar para qué tiempo t se extremiza el producto escalar,
+lo cual depende de la dirección de \hat n. A continuación, busqué para
+qué dirección \theta se extremiza el extremos del producto escalar. Mi
+resultado es
+
+\tan(2\theta)=2 \frac{v_x'v_y'+v_x'' v_y''}
+		     {|v_x|^2 - |v_y|^2}
+
+Lo probé en algunos casos sencillos. Si v_y=0 obtenemos 2\theta=0,
+\pi. Lo mismo si v_x=0. Si v_x=1 y v_y=i (polarización circular)
+tenemos \tan2\theta=0/0, indefinido. Si v_x=v_y tenemos \theta=\pm
+pi/4. Etc.
+
+Así que parece que esta fórmula sí da los ejes principales de la
+elipse de polarización. No he hecho la talacha para ver si corresponde
+con tu ángulo Me sospecho que no coincide con tu fórmula en general,
+pero sí coincide cuando el eigenvector es real. Me sospecho que esto
+debe estar desarrollado en los libros de elipsometría.
+
+Saludos,
+Luis

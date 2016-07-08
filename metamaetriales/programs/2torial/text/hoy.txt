@@ -1,0 +1,64 @@
+From mochan@fis.unam.mx Wed Mar  5 13:44:15 2014
+Date: Tue, 4 Mar 2014 13:46:36 -0600
+From: Luis Mochan <mochan@fis.unam.mx>
+To: Bernardo Mendoza Santoyo <bms@cio.mx>
+Subject: Re: ayuda
+
+Si quieres probamos hoy a las 14:00 de aquí.
+Acabo de intentar entender algo de los ángulos from scratch. Te cuento:
+Considera un eigenvector complejo \vec v=\vec v'+\vec v''. Conforme
+transcurre el tiempo, su punta recorre la figura \vec(t)=Re \vec v
+e^{-iwt} =  \vec v' \cos wt + \vec v'' \sin wt. Considera un vector
+real fijo unitario \hat n=(cos \theta, \sin \theta). Considera el
+producto escalar dependiente del tiempo \alpha(t)=\hat n\cdot\vec v(t). Lo que
+hice fue encontrar para qué tiempo t se extremiza el producto escalar,
+lo cual depende de la dirección de \hat n. A continuación, busqué para
+qué dirección \theta se extremiza el extremos del producto escalar. Mi
+resultado es
+
+\tan(2\theta)=2 \frac{v_x'v_y'+v_x'' v_y''}
+		     {|v_x|^2 - |v_y|^2}
+
+Lo probé en algunos casos sencillos. Si v_y=0 obtenemos 2\theta=0,
+\pi. Lo mismo si v_x=0. Si v_x=1 y v_y=i (polarización circular)
+tenemos \tan2\theta=0/0, indefinido. Si v_x=v_y tenemos \theta=\pm
+pi/4. Etc.
+
+Así que parece que esta fórmula sí da los ejes principales de la
+elipse de polarización. No he hecho la talacha para ver si corresponde
+con tu ángulo Me sospecho que no coincide con tu fórmula en general,
+pero sí coincide cuando el eigenvector es real. Me sospecho que esto
+debe estar desarrollado en los libros de elipsometría.
+
+Saludos,
+Luis
+
+
+
+
+On Tue, Mar 04, 2014 at 12:04:19PM -0600, Bernardo Mendoza Santoyo wrote:
+> Fig\pi, I'm made sweet-potatos con los angulos principales, pues brincan
+> de valor, cambian por pi, etc. asi que quisiera conseguir audiencia papal,
+> para platicarte del tema y ponernos de acuerdo de como hacerlo
+> 'correctamente', pues la forma en que lo estoy haciendo no me convence del 
+> todo.
+> 
+> Yo puedo entre 8 y 9 am o de 2 a 4 pm, todo en tu hora local. El skype 
+> funciona muy bien, asi que tu dime que dia se puede asap.
+> 
+> saludos
+> 
+> bms
+> 
+> 
+> 
+
+-- 
+
+                                                                  o
+W. Luis Mochán,                      | tel:(52)(777)329-1734     /<(*)
+Instituto de Ciencias Físicas, UNAM  | fax:(52)(777)317-5388     `>/   /\
+Apdo. Postal 48-3, 62251             |                           (*)/\/  \
+Cuernavaca, Morelos, México          | mochan@fis.unam.mx   /\_/\__/
+GPG: 791EB9EB, C949 3F81 6D9B 1191 9A16  C2DF 5F0A C52B 791E B9EB
+

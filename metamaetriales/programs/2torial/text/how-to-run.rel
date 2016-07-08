@@ -1,0 +1,136 @@
+;; RefTeX parse info file
+;; File: /Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex
+;; User: bms (Bernardo Mendoza)
+
+(set reftex-docstruct-symbol '(
+
+
+(xr nil "\\\\\\\\\\\\")
+
+(index-tags)
+
+(is-multi t)
+
+(bibview-cache)
+
+(master-dir . "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/")
+
+(label-numbers)
+
+(bof "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex")
+
+(bof "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/definitions.tex")
+
+(eof "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/definitions.tex")
+
+(toc "toc" "    1 Introduction" "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil 2 "1" "\\section{Introduction}" 1863)
+
+(toc "toc" "    2 Software installation" "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil 2 "2" "\\section{Software installation}" 3383)
+
+(toc "toc" "    3 Crimes and Misdemeanors" "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil 2 "3" "\\section{Crimes and Misdemeanors}" 4504)
+
+(toc "toc" "    4 Initialization" "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil 2 "4" "\\section{Initialization}" 5108)
+
+(toc "toc" "    5 Inkscape" "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil 2 "5" "\\section{Inkscape}" 5957)
+
+("wj" "i" "In \\verb=file=$\\to$\\verb=Document Properties=$\\to$\\verb=Page=$\\to$\\verb=Custom size=" "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil)
+
+(toc "toc" "    6 magick" "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil 2 "6" "\\section{magick}" 7612)
+
+(toc "toc" "    7 Haydock Coefficients" "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil 2 "7" "\\section{Haydock Coefficients}" 7831)
+
+(toc "toc" "    8 Electric Fields" "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil 2 "8" "\\section{Electric Fields}" 8214)
+
+(toc "toc" "    9 Macroscopic Dielectric Function" "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil 2 "9" "\\section{Macroscopic Dielectric Function}" 8564)
+
+("nir" "e" "R_i(\\go)=\\left|\\frac{\\sqrt{\\ge_i(\\go)}-1}{\\sqrt{\\ge_i(\\go)}+1}\\right|^2 , " "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil)
+
+(toc "toc" "    10 Plots" "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil 2 "10" "\\section{Plots}" 9370)
+
+(toc "toc" "    11 Movies" "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil 2 "11" "\\section{Movies}" 10472)
+
+(toc "toc" "    12 Dipolar Fields" "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil 2 "12" "\\section{Dipolar Fields}" 11780)
+
+(toc "toc" "    13 the-hole-enchilada" "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil 2 "13" "\\section{the-hole-enchilada}" 12002)
+
+(toc "toc" "    14 Example" "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil 2 "14" "\\section{Example}" 13391)
+
+(toc "toc" "      14.1 Run" "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil 3 "14.1" "\\subsection{Run}" 13409)
+
+(toc "toc" "      14.2 Redo the Plots" "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil 3 "14.2" "\\subsection{Redo the Plots}" 15486)
+
+("deaqui" "i" "\\verb=PWD/hc> ls * > hoy= " "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil)
+
+("aca" "i" "\\verb=PWD/new> ./lista2=" "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil)
+
+(toc "toc" "    15 Internal Checkups" "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil 2 "15" "\\section{Internal Checkups}" 16558)
+
+(toc "toc" "      15.1 $\\bfP\\cdot\\bfE$ approach" "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil 3 "15.1" "\\subsection{$\\bfP\\cdot\\bfE$ approach}" 16587)
+
+("pol1" "e" "\\bfD(\\bfr)=\\bfE(\\bfr)+4\\pi\\bfP(\\bfr)=\\bfge(\\bfr)\\cdot\\bfE(\\bfr) , " "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil)
+
+("pol2" "e" "\\bfE(\\bfr) \\cdot\\bfE(\\bfr) +4\\pi\\bfP(\\bfr) \\cdot\\bfE(\\bfr)=\\bfge(\\bfr)\\cdot\\bfE(\\bfr) \\cdot\\bfE(\\bfr" "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil)
+
+("pol3" "e" "E_i^2(\\bfr) +4\\pi P_i(\\bfr)E_i(\\bfr)&=&\\ge_i(\\bfr)E_i^2(\\bfr) \\nonumber" "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil)
+
+("pol4" "e" "\\ge_i^M=1+4\\pi \\left([P_i(\\bfr)E_i(\\bfr)]\\Big|_{\\bfr\\,\\in\\,\\mathrm{inclusion}} +[P_i(\\bfr)E_i(\\bfr)]" "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil)
+
+(toc "toc" "      15.2 Dipolar Approximation" "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil 3 "15.2" "\\subsection{Dipolar Approximation}" 18577)
+
+("dipole" "s" "Following the notes of WLM (yet to be \\LaTeX'ed), in the following plots we compare the full approac" "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil)
+
+(toc "toc" "    16 Notes" "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil 2 "16" "\\section{Notes}" 20010)
+
+(toc "toc" "      16.1 General theory" "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil 3 "16.1" "\\subsection{General theory}" 20102)
+
+("Theory" "s" "We have shown how to get the macroscopic electromagnetic response of composite systems We have propo" "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil)
+
+("epsmicro" "e" "\\epsilon(\\mathbf r)= \\frac{\\epsilon_A}{u}\\left( u-B(\\mathbf r) \\right), " "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil)
+
+("epsll" "e" "\\hat \\epsilon^{LL}_{\\mathbf G\\mathbf G'}= \\frac{\\epsilon_A}{u}\\left( u- B ^{LL}_{\\mathbf G\\mathbf G'" "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil)
+
+("epslli" "e" "\\left( \\hat \\epsilon^{LL}_{\\mathbf G\\mathbf G'}\\right)^{-1}_{\\mathbf 0\\mathbf 0}= \\frac{u}{\\epsilon_" "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil)
+
+("n+1" "e" "|\\widetilde{n+1}\\rangle\\equiv \\op H |n\\rangle = b_{n+1}|n+1\\rangle + a_n |n\\rangle + b_{n}|n-1\\rangl" "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil)
+
+("ortonor" "e" "\\langle n|m\\rangle = \\delta_{nm}, " "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil)
+
+("MWaveMatrix" "e" "\\left( u-\\op B \\right)\\to \\left( \\begin{array}{ccccc} u-a_0 & -b_1 & 0 & 0&\\cdots" "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil)
+
+("chin" "e" "\\left( \\epsilon^{M}_{LL}\\right)^{-1} = \\frac{u}{\\epsilon_A} \\frac{1} {u-a_0 -\\frac{ b_1^2} {u -a_1 -" "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil)
+
+("HaydockMethod" "s" "The constitutive equation in the long wavelength limit is \\begin{equation}  \\mathbf D_{L} = \\hat \\ep" "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" t)
+
+("constitutiva" "e" "\\mathbf D_{L} = \\hat \\epsilon_{LL} \\mathbf E_L, " "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil)
+
+("EL" "e" "\\mathbf E_L = (\\hat\\epsilon_{LL})^{-1}\\mathbf D_L. " "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil)
+
+("ELp" "e" "\\mathbf E_L^a = (\\hat\\epsilon_{LL})_{aa}^{-1}\\mathbf D_L^a + (\\hat\\epsilon_{LL})_{af}^{-1}\\mathbf D_" "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil)
+
+("ELM" "e" "\\mathbf E_L^a = (\\hat\\epsilon_{LL})_{aa}^{-1}\\mathbf D_L^a. " "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil)
+
+("ELMm" "e" "\\mathbf E_L^M = (\\hat\\epsilon_{LL})_{aa}^{-1}\\mathbf D_L^M. " "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil)
+
+("dl" "e" "\\mathbf D_L \\to \\left( \\begin{array}{c} \\mathbf D_0 " "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil)
+
+("el" "e" "\\mathbf E_L \\to \\left( \\begin{array}{c} \\mathbf E_0 " "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil)
+
+("consti" "e" "\\left( \\begin{array}{c} \\mathbf D_0 " "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil)
+
+(toc "toc" "    17 Optical Activity" "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil 2 "17" "\\section{Optical Activity}" 26172)
+
+("vecs" "e" "\\bfV_{\\ga}&=&v_{\\ga,x}\\hat\\bfx+v_{\\ga,y}\\hat\\bfy\\quad(\\ga=1,2) \\nonumber " "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil)
+
+("teta" "e" "\\theta_\\ga &=& \\mathrm{Re}\\left[\\tan^{-1}\\left(\\frac{v_{\\ga,y}}{v_{\\ga,x}}\\right)\\right] \\nonumber" "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil)
+
+("eli" "e" "{\\cal E}_\\ga\\to(a_\\ga,b_\\ga)= (e^\\rmr_\\ga,e^\\rmi_\\ga)/e_\\ga %\\left\\{ %\\begin{array}{cc} %(1,e^\\rmi_\\" "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil)
+
+("es" "e" "e^\\rmr_\\ga&=&\\sqrt{(v^{\\rmr}_{\\ga,x})^2+(v^{\\rmr}_{\\ga,y})^2} " "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil)
+
+("eta" "e" "\\eta_\\ga\\equiv \\frac{a_\\ga-b_\\ga}{a_\\ga+b_\\ga} , " "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil)
+
+("wlm.1" "e" "V_1^T\\cdot\\ge\\cdot V_2 &=& V_1^T\\cdot\\big(\\ge\\cdot V_2\\big) = \\lambda_2V_1^T\\cdot V_2\\to\\mathrm{scal" "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex" nil)
+
+(eof "/Users/bms/research/metamaterials/haydock/fields/programs/2torial/text/how-to-run.tex")
+))
+

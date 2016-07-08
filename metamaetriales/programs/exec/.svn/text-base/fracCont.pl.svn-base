@@ -1,0 +1,225 @@
+#!/usr/bin/env perl
+######
+use strict;
+use warnings;
+use PDL;
+use PDL::Complex;
+use Getopt::Long;
+use PDL::IO::Dumper;#frestore
+#use Storable;#store
+#use PDL::IO::Storable;#freeze
+use PDL::NiceSlice;
+use Scalar::Util qw(looks_like_number);
+use File::Basename;
+#use Math::Complex;
+
+use constant SMALL=>1e-10;
+use constant PI=>4*atan2(1,1);
+
+my $epsa; # filenames for eps a, eps b and haydock's coeff.
+my $epsb;
+my $fhaydock; # filename for Haydock coeffs.
+my $od; #output directory
+my ($nepsa, $nepsb); # flag numeric (vs file) epsilons
+my $cepsa; #complex dielectric functions
+my $cepsb;
+my $Nh;
+
+GetOptions("epsa=s" => \$epsa,
+	   "epsb=s" => \$epsb,
+	   "haydock=s" => \$fhaydock,
+	   "od=s" =>  \$od,
+	   "Nh=i" => \$Nh,
+	  );
+
+die <<"FIN" 
+ Use:
+    ./fracCont.pl --epsa=dielFunc --epsb=dielFunc --haydock=fileh --od=outputDirectory --Nh=numberOfCoefficients
+
+    Calculate the macroscopic dielectric function for a photonic
+    crystal whose geometry is described by the Haydock coefficients
+    a=>matrix, b=>inclusion
+
+       --epsa=value/file of eps_a. Values are in format RrealIimag where
+                 real and imag are floats. At least one R or I part should 
+                 be present
+       --epsb=value/file of eps_b (see above)
+       --haydock=fileh (file with Haydocks coefficients)
+       --Nh=number number of Haydock coefficients
+       --od=path     output directory. 
+                  Note: The output filenames are built from the input
+                  filename by appending the number of desired coefficients 
+                  and the extension .dat. 
+FIN
+  unless defined $epsa and defined $epsb and defined $fhaydock and
+  defined $Nh and defined $od;
+
+$cepsa=stringtocomplex($epsa);
+$nepsa=defined $cepsa;
+my $fepsa=$epsa unless $nepsa;
+$cepsb=stringtocomplex($epsb);
+$nepsb=defined $cepsb;
+my $fepsb=$epsb unless $nepsb;
+
+#read Haydock coefficients and states in one big gulp
+printf "\n";
+my $ti=time;
+my $tf=sprintf "%.2f", ((time-$ti)/60);
+printf "\tReading Haydock's coefficients in pld structured format \n";
+my $datos=frestore($fhaydock);
+#my $datos=$fhaydock->freeze;
+printf "\tDone reading in $tf minutes!\n";
+printf "\tCalculating the macroscopic eps and other goodies\n";
+
+my ($base, $directorio, $ext)=fileparse($fhaydock, ".pld");
+
+#Get substance names from epsilon file names
+my ($elementoa, $elementob);
+$elementoa=$1 if !$nepsa and $fepsa=~/^eps_(.*)\.dat$/;
+$elementob=$1 if !$nepsb and $fepsb=~/^eps_(.*)\.dat$/;
+
+my $nombre;
+
+# file name if both epsilons are numbers
+$nombre= sprintf 
+  "${base}_Nh_${Nh}_epsa_%.3f-%.3f_epsb_%.3f-%.3f-dat",
+  $cepsa->re, $cepsa->im, $cepsb->re, $cepsb->im 
+  if $nepsa and $nepsb;
+# $filenames if only epsb number
+$nombre= sprintf 
+  "${base}_Nh_${Nh}_epsa_%s_epsb_%.3f-%.3f-dat",
+  $elementoa, $cepsb->re, $cepsb->im 
+  if !$nepsa and $nepsb;
+# $filenames if only epsa number
+$nombre= sprintf 
+  "${base}_Nh_${Nh}_epsa_%.3f-%.3f_epsb_%s-dat",
+  $cepsa->re, $cepsa->im, $elementob 
+  if $nepsa and !$nepsb;
+# $filenames if neither number
+$nombre= sprintf 
+  "${base}_Nh_${Nh}_epsa_%s_epsb_%s-dat",
+  $elementoa, $elementob
+  if !$nepsa and !$nepsb;
+my $output="${od}eps-${nombre}";
+die "Can't open $output" unless open(OUTPUT, "> $output");
+# eps(ij)(ri)=macroscopic eps for (ij)-direction in original axis with (ri)-real or imaginary
+# epsnd(ri)=non-diagonal part of macroscopic eps with (ri)-real or imaginary
+# pv(12)(ri)=principal value macroscopic eps in principal-(rotated)-axis-(12) with (ri)-real or imaginary
+# v(12)(xy)(ri)=principal vectors-(12) along-(xy) with (ri)-real or imaginary
+# tet(12)(ri)=angles of rotated axis-(12) (w.r.t original axis) with (ri)-real or imaginary
+# tet1r+tet2r=90 and tet(12)i~0
+# nir(12)=Normal Incidence Reflectance along principal axis-(12)  
+# for complex teta1 and teta2
+print OUTPUT "w epsxxr epsxxi epsyyr epsyyi epsxyr epsxyi epsndr epsndi pv1r"
+  . " pv1i pv2r pv2i v1xr v1xi v1yr v1yi v2xr v2xi v2yr v2yi tet1r tet1i"
+  . " tet2r tet2i nir1 nir2 epsar epsai epsbr epsbi a1 b1 a2 b2\n";
+
+unless($nepsa){
+  open(EPSA, "<", $fepsa) or die "Couldn't open $fepsa";
+}
+unless($nepsb){
+  open(EPSB, "<", $fepsb) or die "Couldn't open $fepsb";
+}
+
+my ($freca, $rea, $ima); # frequency, real and im part from files fepsa
+my ($frecb, $reb, $imb); # and fepsb 
+
+#iterate over epsilon file rows
+while(1){
+  unless($nepsa){
+    last unless defined ($_=<EPSA>);
+    chomp;
+    ($freca, $rea, $ima) = split;
+    $cepsa = $rea+$ima * i;
+  }
+  unless($nepsb){
+    last unless defined ($_=<EPSB>);
+    chomp;
+    ($frecb, $reb, $imb) = split;
+    $cepsb = $reb+$imb * i;
+  }
+  $freca=$frecb=1 if $nepsa and $nepsb;
+  $freca=$frecb if $nepsa;
+  $frecb=$freca if $nepsb;
+  die "Frequencies in files $epsa and $epsb differ at line $."
+    unless $freca==$frecb;
+  my $frec=$freca;
+  
+  my $u=1/(1-$cepsb/$cepsa);
+  my %dirs=%{$datos->{dirs}};
+  my %eps;
+  foreach my $dir (sort {$a cmp $b} keys %dirs){
+    my @bN2=@{$datos->{bN2}{$dir}};
+    my @aN=@{$datos->{aN}{$dir}};
+    my $n=0;
+    my $M=[[$u-$aN[$n++],1],[1,0]];
+    while($n<@aN){
+      my $A=[[$u-$aN[$n],1],[-$bN2[$n],0]];
+      $M=mult($M,$A);
+      $n++;
+    }
+    my $epsM=$cepsa*$M->[0][0]/$M->[1][0]/$u;
+    $eps{$dir}=$epsM;
+  }
+# Diagonalization for PV eps and PV axis
+  my $ebar=($eps{xx}+$eps{yy})/2;
+  $eps{nd}=$eps{xy}-$ebar; #non diag part of matrix
+  my $det=$eps{xx}*$eps{yy}-$eps{nd}**2; #get principal values
+  my $sq=sqrt($ebar**2-$det);
+  $sq=0+0*i unless abs($sq) > SMALL;
+  my $lam1=$ebar+$sq; #
+  my $lam2=$ebar-$sq;
+  # principal directions
+  my $v1=pdl($eps{nd},$lam1-$eps{xx})->cplx; #re-complexize vector
+  my $v2=pdl($eps{nd},$lam2-$eps{xx})->cplx;
+  # a1,b1 for elipses
+  my $e1r=sqrt(($v1(:,(0))->re)**2+($v1(:,(1))->re)**2);
+  my $e1i=sqrt(($v1(:,(0))->im)**2+($v1(:,(1))->im)**2);
+  my $e1=sqrt($e1r**2+$e1i**2);
+  my $a1=$e1r/$e1;
+  my $b1=$e1i/$e1;
+  # a2,b2 for elipses
+  my $e2r=sqrt(($v2(:,(0))->re)**2+($v2(:,(1))->re)**2);
+  my $e2i=sqrt(($v2(:,(0))->im)**2+($v2(:,(1))->im)**2);
+  my $e2=sqrt($e2r**2+$e2i**2);
+  my $a2=$e2r/$e2;
+  my $b2=$e2i/$e2;
+  # principal (complex) directions
+  my $t1=atan2($v1(:,(1)),$v1(:,(0)))*180/PI;
+  my $t2=atan2($v2(:,(1)),$v2(:,(0)))*180/PI;
+  # Normal Incidence Reflectance for Principal Axis lam(12)
+  my $aux=abs((sqrt($lam1)-1)/(sqrt($lam1)+1));
+  my $nir1=$aux*$aux;
+  $aux=abs((sqrt($lam2)-1)/(sqrt($lam2)+1));
+  my $nir2=$aux*$aux;
+  #print everything
+  print OUTPUT join " ", $frec, 
+    (map {$_->list} ($eps{xx}, $eps{yy}, $eps{xy},
+		     $eps{nd}, $lam1, $lam2, $v1, $v2, $t1, $t2)),$nir1,$nir2,$cepsa->re,$cepsa->im,$cepsb->re,$cepsb->im,$a1,$b1,$a2,$b2, "\n";
+  last if $nepsa and $nepsb;
+}
+printf "\toutput:$output\n\n";
+
+sub mult {
+  my ($a, $b)=@_;
+  my $c;
+  foreach my $i (0,1){
+    foreach my $j (0,1) {
+      $c->[$i][$j]=$a->[$i][0]*$b->[0][$j]+$a->[$i][1]*$b->[1][$j];
+    }
+  }
+  return $c;
+}
+
+sub stringtocomplex {
+  my $str=shift @_;
+  my($re, $im, $si)=(undef,undef,'+');
+  ($re,$im, $si)=($str,0, '+') if looks_like_number($str);
+  ($re, $im, $si)=($1,$3, $2) if $str=~/(.*)([+-])i\*(.*)/ &&
+    looks_like_number($1) && looks_like_number($3);   
+  $im=-$im if $si eq '-';
+  return my $cmplx=$re+i*$im if defined $re and defined $im;
+  return undef;
+}
+
+__END__

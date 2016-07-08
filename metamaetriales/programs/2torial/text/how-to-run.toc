@@ -1,0 +1,33 @@
+\select@language {english}
+\tocdepth@munge 
+\contentsline {section}{\numberline {}Contents}{2}{section*.1}
+\tocdepth@restore 
+\contentsline {section}{\numberline {I}For the Impatiente}{3}{section*.2}
+\contentsline {section}{\numberline {II}Introduction}{3}{section*.3}
+\contentsline {section}{\numberline {III}Software installation}{4}{section*.4}
+\contentsline {section}{\numberline {IV}Crimes and Misdemeanors}{5}{section*.5}
+\contentsline {section}{\numberline {V}Initialization}{5}{section*.6}
+\contentsline {section}{\numberline {VI}Inkscape}{6}{section*.7}
+\contentsline {section}{\numberline {VII}magick}{7}{section*.8}
+\contentsline {section}{\numberline {VIII}Haydock Coefficients}{7}{section*.9}
+\contentsline {section}{\numberline {IX}Electric Fields}{7}{section*.10}
+\contentsline {section}{\numberline {X}Macroscopic Dielectric Function}{8}{section*.11}
+\contentsline {section}{\numberline {XI}Plots}{8}{section*.12}
+\contentsline {section}{\numberline {XII}Movies}{9}{section*.13}
+\contentsline {section}{\numberline {XIII}Dipolar Fields}{10}{section*.14}
+\contentsline {section}{\numberline {XIV}the-hole-enchilada}{10}{section*.15}
+\contentsline {section}{\numberline {XV}Example}{11}{section*.16}
+\contentsline {subsection}{\numberline {A}Run}{11}{section*.17}
+\contentsline {subsection}{\numberline {B}Redo the Plots}{14}{section*.18}
+\contentsline {section}{\numberline {XVI}Internal Checkups}{14}{section*.19}
+\contentsline {subsection}{\numberline {A}$\mathbf {P}\cdot \mathbf {E}$ approach}{14}{section*.20}
+\contentsline {subsection}{\numberline {B}Dipolar Approximation}{16}{section*.21}
+\contentsline {section}{\numberline {XVII}Notes}{17}{section*.22}
+\contentsline {subsection}{\numberline {A}General theory}{17}{section*.23}
+\contentsline {section}{\numberline {XVIII}Optical Activity}{21}{section*.24}
+\contentsline {subsection}{\numberline {A}Diagonalization}{21}{section*.25}
+\contentsline {subsection}{\numberline {B}Elliptical Polarization}{22}{section*.26}
+\appendix 
+\contentsline {section}{\numberline {A}Complex Eigenvectors}{24}{section*.27}
+\contentsline {section}{\numberline {B}Projection of the Electric Field}{24}{section*.28}
+\contentsline {section}{\numberline {C}Ellipses}{25}{section*.29}

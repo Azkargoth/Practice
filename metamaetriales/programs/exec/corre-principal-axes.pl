@@ -1,0 +1,150 @@
+#!/usr/bin/env perl
+#######################
+
+use strict;
+use Pod::Usage;
+use Getopt::Long;
+use File::Basename;
+
+# executables
+#path where the programs are located in your computer
+#read from PWD/.ruta
+my $ruta=`awk '{print \$1}' .ruta`;
+$ruta=~s/\s+//g;
+my $execawk="$ruta/chose-column.awk";
+my $execbase="$ruta/haydock2DNRBase.pl";
+# reads input
+# Options
+my $od; #output directory
+my $Nh;#Haydock's coefficients
+my $epsm;#file with Macroscopic dielectric where the angle of the Principal Axes are
+my $tvsw;#small=>average angle or big=>all the angles
+my $fixedangle;#fixed angle
+#
+GetOptions(
+	   "od=s" => \$od,
+	   "Nh=i" => \$Nh,
+	   "epsm=s" => \$epsm,
+	   "tvsw=s" => \$tvsw,
+	   "fixedangle=f" => \$fixedangle,
+	  );
+#
+# screen instructions
+#
+die <<"FIN"
+
+corre-principal-axes.pl --od=s --Nh=i --epsm=s --tvsw=s
+
+             s=>string f=>real i=integer 
+
+    Generate the Haydock Coefficients (HC) for principal axes
+    WARNING: Plot 'aa1' from epsm/eps-* to check its variation w.r.t energy
+             If the variation is small use --tvsw=small
+             If the variation is big   use --tvsw=big
+
+    --od=path         Output directory 
+    --Nh=i            Haydock's Coefficients            
+  --epsm=path/file    File with Macroscopic dielectric function (crystal-axes)
+                      where the angles of the Principal Axes are
+  --tvsw=s            small or big
+                      small=> HC for the average angle
+                      big  => HC for each angle
+  --fixedangle=f      [Optional] Fixed Polarization Angle 
+
+FIN
+  unless defined $od  and defined $Nh and defined $epsm and defined $tvsw;
+
+# extracts the name for the corresponding unit cell
+my ($a,$name);
+my ($fcase, $id, $ext)=fileparse($epsm, "-dat");
+($a,$name)=split('eps-',$fcase,2);
+($name,$a)=split('_crystal',$name,3);
+#printf "\n\n\t$name\n\n";
+#die;
+my $namen="$name";
+$name="$name.png";
+# get the eV
+system "awk -f $execawk -v colname=w $epsm > ev.rem";
+# get the angle alpha_a(1)
+system "awk -f $execawk -v colname=aa1 $epsm > ang1.rem";
+# get the angle alpha_a(2)
+system "awk -f $execawk -v colname=aa2 $epsm > ang2.rem";
+# get the epsa
+system "awk -f $execawk -v colname=epsar $epsm > 3.rem";
+system "awk -f $execawk -v colname=epsai $epsm > 4.rem";
+# get the epsb
+system "awk -f $execawk -v colname=epsbr $epsm > 5.rem";
+system "awk -f $execawk -v colname=epsbi $epsm > 6.rem";
+# get the (a,b) scaled semiaxis for elipses
+# a1,b1
+system "awk -f $execawk -v colname=a1 $epsm > 7.rem";
+system "awk -f $execawk -v colname=b1 $epsm > 8.rem";
+# a2,b2
+system "awk -f $execawk -v colname=a2 $epsm > 9.rem";
+system "awk -f $execawk -v colname=b2 $epsm > 10.rem";
+# joins the file
+system "paste ev.rem ang1.rem ang2.rem 3.rem 4.rem 5.rem 6.rem 7.rem 8.rem 9.rem 10.rem > data.rem";
+#
+open(FILE, "< data.rem");
+my $n=0;
+my $ang;
+my $avea;
+my $sang=0;
+if ("$tvsw"eq"small"){printf "\n\tSmall variation of theta vs energy\n\tDoing the theta average\n"};
+if ("$tvsw"eq"big"){printf "\n\tBig variation of theta vs energy\n"};
+while(<FILE>){
+  chomp;
+  $n=($n+1);
+  my ($w,$a1,$a2,$a3,$a4,$a5,$a6,$a7,$a8,$a9,$a10)=split;
+  my $ang1="$a1";
+  my $ang2="$a2";
+# elipse a1,b1
+  my $ea1="$a7";
+  my $eb1="$a8";
+# elipse a1,b1
+  my $ea2="$a9";
+  my $eb2="$a10";
+# formats a(1,2),b(1,2)
+  $ea1=sprintf "%.2f", $ea1;   
+  $eb1=sprintf "%.2f", $eb1;   
+  $ea2=sprintf "%.2f", $ea2;   
+  $eb2=sprintf "%.2f", $eb2;   
+#
+  $ang=$ang1 if $n==1;
+## fixed angle
+  $ang=$fixedangle if(defined $fixedangle);
+##
+  if ("$tvsw"eq"big"){
+# joins data for epsa and epsb
+    my $ea="$a3+i*$a4";
+    my $eb="$a5+i*$a6";
+    $ang=sprintf "%.2f",$a1;
+    $a2=sprintf "%.2f",$a2;
+    $w=sprintf "%.5f",$w;
+    printf "\tDoing Haydock coefficients for w=$w ang=($ang,$a2,$ea1,$eb1;$ea2,$eb2) epsa=$ea epsb=$eb\n";
+    my $namenn="hc/$namen\_principal\_$ang,$a2,$ea1,$eb1,$ea2,$eb2\_vsw\_W$w\_epsa\_$ea-epsb\_$eb.pld";
+#    print "\t$namenn\n";
+    if (-e $namenn){
+      &myline;
+      printf "\tHaydock File exists, no need to calculate again\n";
+      &myline;
+    }
+    else{
+      system "$execbase --Nh=$Nh --od=$od --if=cases/$name --axes=principal --ang1=$ang --ang2=$ang2 --epsa=$ea --epsb=$eb --ev=$w --eab='$ea1,$eb1,$ea2,$eb2'"; 
+    }
+  };
+}
+  if ("$tvsw"eq"small"){
+    $ang=sprintf "%.2f", $ang;   
+    printf "\tDoing Haydock coefficients for average theta=$ang\n" if(! defined $fixedangle);
+    printf "\tDoing Haydock coefficients for fixed theta=$ang\n" if(defined $fixedangle);
+    system "$execbase --Nh=$Nh --od=$od --if=cases/$name --axes=principal --ang=$ang --ev=ave"; 
+  };
+ 
+system "rm *.rem";
+#####
+sub myline {
+  printf "\t*************************\n";}
+
+__END__
+
